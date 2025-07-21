@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEX AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+
+<body>
+
+  <header class="main-header">
+    <div class="top-bar">
+      <div class="top-left">
+        <button id="menu-toggle" class="menu-btn">☰</button>
+        <div class="logo-title">
+          <img src="nex-logo.png" class="logo" alt="NEX Logo" />
+          <span class="title"> </span>
+        </div>
+      </div>
+      <div class="top-right">
+        <button id="login-btn" class="login-btn">Login</button>
+        <button id="logout-btn" class="logout-btn hidden">Logout</button>
+      </div>
+    </div>
+    <nav id="nav-menu" class="nav-menu hidden">
+      <ul>
+        <li><a href="#">🏠 Home</a></li>
+        <li><a href="#">📂 Chat History</a></li>
+        <li><a href="#" onclick="openMemoryModal()">🧠 Memory</a></li>
+        <li><a href="#">🛠️ Admin</a></li>
+        <li><a href="#">ℹ️ About</a></li>
+        <li><a href="#">📧 Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  
+  
+
+  <main>
+    <div id="chat-container"></div>
+    <div id="typing-indicator" class="hidden">Typing...</div>
+
+    <!-- Input Area -->
+    <div id="input-area">
+      <button class="icon-btn" id="img-btn">
+        <img src="icon-image.png" alt="Image" />
+      </button>
+
+      <input type="text" id="user-input" placeholder="Ask anything..." />
+
+      <button class="icon-btn" id="mic-btn">
+        <img src="icon-mic.png" alt="Mic" />
+      </button>
+
+      <button class="icon-btn" id="wave-btn">
+        <img src="icon-wave.png" alt="Wave" />
+      </button>
+
+      <button class="icon-btn hidden" id="send-btn">
+        <img src="icon-send.png" alt="Send" />
+      </button>
+    </div>
+  </main>
+  
+  
+  
+  
+
+  <!-- Optional: Memory Modal -->
+  <div id="memory-modal" class="hidden">
+    <h2>🧠 Personalized Memory</h2>
+    <div id="memory-list"></div>
+    <input id="new-memory-key" placeholder="Key (e.g. name)" />
+    <input id="new-memory-value" placeholder="Value (e.g. Anas)" />
+    <br><br>
+    <button onclick="alert('Saved!')" class="save-btn">➕ Save</button>
+    <button onclick="closeMemory()" class="close-btn">❌ Close</button>
+  </div>
+  
+  
+
+  <!-- Optional: In-App Browser Warning -->
+  <div id="webview-warning" class="hidden">
+    🚫 This app doesn’t work properly inside in-app browsers (e.g. Instagram or TikTok).
+    <br><br>
+    <a href="#" onclick="openInBrowser()">Open in Browser</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+
+
+
+</html>
