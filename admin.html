@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NEX AI Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <main class="admin-panel">
+    <h2>🔐 Admin Login</h2>
+    <!--
+    <input type="password" id="admin-password" placeholder="Enter Admin Password">
+    -->
+    
+    <button onclick="adminLogin()">🔐 Login with Google</button>
+
+    <div id="admin-area" class="hidden">
+      <h2>⚙️ Admin Dashboard</h2>
+
+      <!-- Tab buttons to navigate between sections -->
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="tab-keys">🔑 API Keys</button>
+        <button class="tab-btn" data-tab="tab-fail">📉 Fail Count</button>
+        <button class="tab-btn" data-tab="tab-model">🧠 AI Model</button>
+      </div>
+
+      <!-- Tab content panels -->
+      <div class="tab-content">
+
+        <!-- Tab for managing API Keys -->
+        <section id="tab-keys" class="tab-panel active">
+          <h3>🔑 Manage API Keys</h3>
+          <ul id="key-list"></ul>
+          <input id="new-key" placeholder="Add new OpenRouter Key">
+          <button onclick="addKey()">Add Key</button>
+        </section>
+
+        <!-- Tab for resetting fail count -->
+        <section id="tab-fail" class="tab-panel">
+          <h3>📉 Reset Fail Count</h3>
+          <button onclick="resetFailCount()">Reset All Fail Count</button>
+        </section>
+
+        <!-- Tab for managing active AI model -->
+        <section id="tab-model" class="tab-panel">
+          <h3>🧠 Set Active Model</h3>
+          <input id="active-model" placeholder="e.g. mistralai/mistral-7b-instruct">
+          <button onclick="updateModel()">Set Model</button>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
