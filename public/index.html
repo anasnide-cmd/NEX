@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NEX AI</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
-
-
 
 <body>
 
@@ -18,7 +14,7 @@
       <div class="top-left">
         <button id="menu-toggle" class="menu-btn">☰</button>
         <div class="logo-title">
-          <img src="./public/nex-logo.png" class="logo" alt="NEX Logo" />
+          <img src="./nex-logo.png" class="logo" alt="NEX Logo" />
           <span class="title"> </span>
         </div>
       </div>
@@ -38,9 +34,6 @@
       </ul>
     </nav>
   </header>
-  
-  
-  
 
   <main>
     <div id="chat-container"></div>
@@ -49,30 +42,26 @@
     <!-- Input Area -->
     <div id="input-area">
       <button class="icon-btn" id="img-btn">
-        <img src="icon-image.png" alt="Image" />
+        <img src="./icon-image.png" alt="Image" />
       </button>
 
       <input type="text" id="user-input" placeholder="Ask anything..." />
 
       <button class="icon-btn" id="mic-btn">
-        <img src="icon-mic.png" alt="Mic" />
+        <img src="./icon-mic.png" alt="Mic" />
       </button>
 
       <button class="icon-btn" id="wave-btn">
-        <img src="icon-wave.png" alt="Wave" />
+        <img src="./icon-wave.png" alt="Wave" />
       </button>
 
       <button class="icon-btn hidden" id="send-btn">
-        <img src="icon-send.png" alt="Send" />
+        <img src="./icon-send.png" alt="Send" />
       </button>
     </div>
   </main>
-  
-  
-  
-  
 
-  <!-- Optional: Memory Modal -->
+  <!-- Memory Modal -->
   <div id="memory-modal" class="hidden">
     <h2>🧠 Personalized Memory</h2>
     <div id="memory-list"></div>
@@ -82,20 +71,14 @@
     <button onclick="alert('Saved!')" class="save-btn">➕ Save</button>
     <button onclick="closeMemory()" class="close-btn">❌ Close</button>
   </div>
-  
-  
 
-  <!-- Optional: In-App Browser Warning -->
+  <!-- In-App Browser Warning -->
   <div id="webview-warning" class="hidden">
     🚫 This app doesn’t work properly inside in-app browsers (e.g. Instagram or TikTok).
     <br><br>
     <a href="#" onclick="openInBrowser()">Open in Browser</a>
   </div>
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
-
-
-
-
 </html>
