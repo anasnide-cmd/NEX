@@ -1,1 +1,5 @@
-
+{
+  "projects": {
+    "default": "nex-ai-96716.web.app"
+  }
+}
