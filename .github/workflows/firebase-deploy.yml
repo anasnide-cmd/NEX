@@ -1,2 +1,21 @@
-firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEX_AI }}"
-projectId: nex-ai-96716
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEX_AI }}"
+          channelId: live
+          projectId: nex-ai-96716
