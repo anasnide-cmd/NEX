@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+  
+  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NEX AI</title>
-
-  <!-- Relatif & sesuai Firebase Hosting -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
+
 
 <body>
 
@@ -17,7 +19,7 @@
         <button id="menu-toggle" class="menu-btn">☰</button>
         <div class="logo-title">
           <img src="nex-logo.png" class="logo" alt="NEX Logo" />
-          <span class="title">NEX AI</span>
+          <span class="title"> </span>
         </div>
       </div>
       <div class="top-right">
@@ -25,7 +27,6 @@
         <button id="logout-btn" class="logout-btn hidden">Logout</button>
       </div>
     </div>
-
     <nav id="nav-menu" class="nav-menu hidden">
       <ul>
         <li><a href="#">🏠 Home</a></li>
@@ -37,6 +38,9 @@
       </ul>
     </nav>
   </header>
+  
+  
+  
 
   <main>
     <div id="chat-container"></div>
@@ -63,8 +67,12 @@
       </button>
     </div>
   </main>
+  
+  
+  
+  
 
-  <!-- Memory Modal -->
+  <!-- Optional: Memory Modal -->
   <div id="memory-modal" class="hidden">
     <h2>🧠 Personalized Memory</h2>
     <div id="memory-list"></div>
@@ -74,14 +82,41 @@
     <button onclick="alert('Saved!')" class="save-btn">➕ Save</button>
     <button onclick="closeMemory()" class="close-btn">❌ Close</button>
   </div>
+  
+  
 
-  <!-- In-App Browser Warning -->
+  <!-- Optional: In-App Browser Warning -->
   <div id="webview-warning" class="hidden">
     🚫 This app doesn’t work properly inside in-app browsers (e.g. Instagram or TikTok).
     <br><br>
     <a href="#" onclick="openInBrowser()">Open in Browser</a>
   </div>
+<script>
+const fallbackDomain = "https://asset.anasnidir.com/";
 
+function fallbackHandler(tag, attr) {
+  const elements = document.getElementsByTagName(tag);
+  for (let el of elements) {
+    const original = el.getAttribute(attr);
+    if (!original) continue;
+
+    el.onerror = function () {
+      el.onerror = null; // avoid infinite loop
+      el.setAttribute(attr, fallbackDomain + original);
+    };
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  fallbackHandler("img", "src");
+  fallbackHandler("script", "src");
+  fallbackHandler("link", "href");
+});
+</script>
   <script src="script.js"></script>
 </body>
+
+
+
+
 </html>
