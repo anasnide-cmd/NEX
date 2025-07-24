@@ -93,7 +93,7 @@
   <!-- ===== SCRIPT ===== -->
   <script src="script.js"></script>
 
-  <!-- ===== FALLBACK LOGIC ===== -->
+  <!-- ===== IMAGE FALLBACK + VERSION BUSTING ===== -->
   <script>
     const fallbackMap = {
       "nex-logo": "https://asset.anasnidir.com/nex-logo.png",
@@ -104,8 +104,14 @@
     };
 
     for (const id in fallbackMap) {
-      const img = document.getElementById(id);
-      img.onerror = () => img.src = fallbackMap[id];
+      const el = document.getElementById(id);
+      const original = el.getAttribute("src");
+      const timestamp = "?v=" + Date.now();
+      el.setAttribute("src", original + timestamp);
+      el.onerror = () => {
+        el.onerror = null;
+        el.src = fallbackMap[id] + timestamp;
+      };
     }
   </script>
 </body>
