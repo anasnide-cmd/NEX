@@ -4,7 +4,7 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "!/@(images|assets)/**",  // Pengecualian untuk folder gambar
+        "source": "!/@(images|assets)/**",  
         "destination": "/index.html"
       }
     ],
