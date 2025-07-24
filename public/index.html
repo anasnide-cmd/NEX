@@ -4,23 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="NEX AI - Your futuristic AI assistant by Anas Nidir. Ask anything, anytime." />
-  <meta name="theme-color" content="#000000" />
   <meta name="keywords" content="NEX AI, Anas Nidir, AI Assistant, Chatbot, Smart AI" />
   <meta name="author" content="Anas Nidir" />
-  <title>NEX AI</title>
-  <link rel="icon" href="https://asset.anasnidir.com/nex-logo.png" />
+  <meta name="theme-color" content="#000000" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://asset.anasnidir.com; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://asset.anasnidir.com">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="icon" href="nex-logo.png" />
+  <link rel="preload" href="style.css" as="style">
   <link rel="stylesheet" href="style.css" />
+  <title>NEX AI</title>
 </head>
 
 <body>
-
   <!-- ===== HEADER ===== -->
   <header class="main-header">
     <div class="top-bar">
       <div class="top-left">
         <button id="menu-toggle" class="menu-btn">☰</button>
         <div class="logo-title">
-          <img src="https://asset.anasnidir.com/nex-logo.png" class="logo" alt="NEX Logo" />
+          <img id="nex-logo" src="nex-logo.png" class="logo" alt="NEX Logo" />
           <span class="title">NEX AI</span>
         </div>
       </div>
@@ -50,17 +52,17 @@
 
     <div id="input-area">
       <button class="icon-btn" id="img-btn">
-        <img src="https://asset.anasnidir.com/icon-image.png" alt="Image" />
+        <img id="icon-img" src="icon-image.png" alt="Image" />
       </button>
       <input type="text" id="user-input" placeholder="Ask anything..." autofocus />
       <button class="icon-btn" id="mic-btn">
-        <img src="https://asset.anasnidir.com/icon-mic.png" alt="Mic" />
+        <img id="icon-mic" src="icon-mic.png" alt="Mic" />
       </button>
       <button class="icon-btn" id="wave-btn">
-        <img src="https://asset.anasnidir.com/icon-wave.png" alt="Wave" />
+        <img id="icon-wave" src="icon-wave.png" alt="Wave" />
       </button>
       <button class="icon-btn hidden" id="send-btn">
-        <img src="https://asset.anasnidir.com/icon-send.png" alt="Send" />
+        <img id="icon-send" src="icon-send.png" alt="Send" />
       </button>
     </div>
   </main>
@@ -90,5 +92,21 @@
 
   <!-- ===== SCRIPT ===== -->
   <script src="script.js"></script>
+
+  <!-- ===== FALLBACK LOGIC ===== -->
+  <script>
+    const fallbackMap = {
+      "nex-logo": "https://asset.anasnidir.com/nex-logo.png",
+      "icon-img": "https://asset.anasnidir.com/icon-image.png",
+      "icon-mic": "https://asset.anasnidir.com/icon-mic.png",
+      "icon-wave": "https://asset.anasnidir.com/icon-wave.png",
+      "icon-send": "https://asset.anasnidir.com/icon-send.png"
+    };
+
+    for (const id in fallbackMap) {
+      const img = document.getElementById(id);
+      img.onerror = () => img.src = fallbackMap[id];
+    }
+  </script>
 </body>
 </html>
