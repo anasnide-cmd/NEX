@@ -1,0 +1,26 @@
+name: Auto Update version.txt
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # Setiap hari jam 12:00 AM UTC (8:00 pagi waktu Malaysia)
+  workflow_dispatch:      # Boleh juga run manual dari GitHub
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set today's date into version.txt
+        run: echo $(date -u +'%Y%m%d') > version.txt
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "nex-ai-bot"
+          git config --global user.email "noreply@github.com"
+          git add version.txt
+          git commit -m "🔄 Auto update version.txt"
+          git push
+        continue-on-error: true
