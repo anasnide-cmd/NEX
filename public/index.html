@@ -92,28 +92,21 @@
 
   <!-- ===== SCRIPT ===== -->
   <script src="script.js"></script>
-
-  <!-- ===== AUTO FALLBACK PNG SCRIPT ===== -->
-  <script>
-  const fallbackDomain = "https://asset.anasnidir.com/";
-  document.querySelectorAll("img").forEach(img => {
-    const originalSrc = img.getAttribute("src");
-    if (!originalSrc || originalSrc === "#") return; // skip invalid
-
-    const filename = originalSrc.split("/").pop();
-    const bust = "?v=" + Date.now();
-
-    const isLocal = originalSrc.startsWith("./") || originalSrc.startsWith("/") || originalSrc.includes(location.host);
-
-    if (isLocal) {
-      img.src = originalSrc + bust;
-    }
-
-    img.onerror = () => {
-      img.onerror = null;
-      img.src = fallbackDomain + filename + bust;
-    };
-  });
-  </script>
+<script>
+  fetch('version.txt')
+    .then(res => res.text())
+    .then(version => {
+      document.querySelectorAll("img").forEach(img => {
+        const originalSrc = img.getAttribute("src");
+        const filename = originalSrc.split("/").pop();
+        const bust = "?v=" + version.trim();
+        img.src = originalSrc + bust;
+        img.onerror = () => {
+          img.onerror = null;
+          img.src = "https://asset.anasnidir.com/" + filename + bust;
+        };
+      });
+    });
+</script>
 </body>
 </html>
