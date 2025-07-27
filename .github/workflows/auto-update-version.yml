@@ -2,8 +2,8 @@ name: Auto Update version.txt
 
 on:
   schedule:
-    - cron: "0 0 * * *"  # Setiap hari jam 12:00 AM UTC (8:00 pagi waktu Malaysia)
-  workflow_dispatch:      # Boleh juga run manual dari GitHub
+    - cron: "0 0 * * *"  # Setiap hari jam 8 pagi MYT
+  workflow_dispatch:       # Manual run juga dibenarkan
 
 jobs:
   update-version:
@@ -16,11 +16,18 @@ jobs:
       - name: Set today's date into version.txt
         run: echo $(date -u +'%Y%m%d') > version.txt
 
-      - name: Commit changes
+      - name: Commit version.txt
         run: |
           git config --global user.name "nex-ai-bot"
           git config --global user.email "noreply@github.com"
           git add version.txt
-          git commit -m "🔄 Auto update version.txt"
+          git commit -m "📅 Auto update version.txt" || echo "Nothing to commit"
           git push
-        continue-on-error: true
+
+      - name: Deploy to Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEX_AI }}"
+          channelId: live
+          projectId: nex-ai-96716
